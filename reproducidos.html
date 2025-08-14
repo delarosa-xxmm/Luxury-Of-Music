@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Más Reproducidos - Luxury Of Music</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="shortcut icon" href="assets/img/ajooo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <img src="assets/img/ajooo.png" alt="Luxury Logo"/>
+                <span>Luxury</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-main">
+                    <li class="nav-item">
+                        <a href="index.html">
+                            <i class="fas fa-home"></i>
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-search"></i>
+                            <span>Buscar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-th-large"></i>
+                            <span>Tu biblioteca</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="nav-divider"></div>
+
+                <ul class="nav-library">
+                    <li class="nav-item">
+                        <a href="favoritos.html">
+                            <i class="fas fa-heart"></i>
+                            <span>Tus favoritos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="recomendados.html">
+                            <i class="fas fa-star"></i>
+                            <span>Recomendados</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="reproducidos.html">
+                            <i class="fas fa-fire"></i>
+                            <span>Más reproducidos</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="premium-card">
+                    <i class="fas fa-crown"></i>
+                    <h4>Obtén Premium</h4>
+                    <p>Música sin anuncios, descargas ilimitadas</p>
+                    <button class="btn-premium">Actualizar</button>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="nav-buttons">
+                    <button class="nav-btn back">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-btn forward">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar en más reproducidos..." class="search-input">
+                    </div>
+                </div>
+
+                <div class="user-menu">
+                    <button class="user-btn">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Top Tracks Header -->
+                <section class="top-tracks-header">
+                    <div class="header-content">
+                        <div class="header-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="header-info">
+                            <h1 class="page-title">Más Reproducidos</h1>
+                            <p class="page-description">Tus canciones y artistas con más reproducciones de todos los tiempos</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Time Period Selector -->
+                <section class="time-selector">
+                    <div class="time-tabs">
+                        <button class="time-tab active" data-period="all">Todo el tiempo</button>
+                        <button class="time-tab" data-period="year">Este año</button>
+                        <button class="time-tab" data-period="6months">Últimos 6 meses</button>
+                        <button class="time-tab" data-period="month">Este mes</button>
+                    </div>
+                </section>
+
+                <!-- Stats Overview -->
+                <section class="stats-overview">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>12,847</h3>
+                                <p>Reproducciones totales</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>247h</h3>
+                                <p>Tiempo escuchado</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>156</h3>
+                                <p>Canciones únicas</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-music"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>42</h3>
+                                <p>Artistas diferentes</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Top Songs -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2>
+                            <i class="fas fa-trophy trophy-icon"></i>
+                            Tus canciones más reproducidas
+                        </h2>
+                        <div class="view-options">
+                            <button class="view-btn active" data-view="list">
+                                <i class="fas fa-list"></i>
+                            </button>
+                            <button class="view-btn" data-view="chart">
+                                <i class="fas fa-chart-bar"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="top-songs-list">
+                        <div class="top-song-item" data-rank="1">
+                            <div class="song-rank">
+                                <div class="rank-number">1</div>
+                                <div class="rank-change up">
+                                    <i class="fas fa-arrow-up"></i>
+                                </div>
+                            </div>
+                            <div class="song-content">
+                                <div class="song-cover">
+                                    <img src="assets/img/song1.jpg" alt="Midnight Vibes">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="song-details">
+                                    <h4>Midnight Vibes</h4>
+                                    <p>Dreamy Sound</p>
+                                    <div class="song-stats">
+                                        <span class="plays">1,247 reproducciones</span>
+                                        <span class="listening-time">21h 15m escuchado</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="song-actions">
+                                <div class="play-count">
+                                    <div class="play-bar">
+                                        <div class="play-fill" style="width: 100%;"></div>
+                                    </div>
+                                </div>
+                                <button class="action-btn like-btn">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="action-btn">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="top-song-item" data-rank="2">
+                            <div class="song-rank">
+                                <div class="rank-number">2</div>
+                                <div class="rank-change same">
+                                    <i class="fas fa-minus"></i>
+                                </div>
+                            </div>
+                            <div class="song-content">
+                                <div class="song-cover">
+                                    <img src="assets/img/song2.jpg" alt="City Lights">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="song-details">
+                                    <h4>City Lights</h4>
+                                    <p>Luna & The Echo</p>
+                                    <div class="song-stats">
+                                        <span class="plays">1,089 reproducciones</span>
+                                        <span class="listening-time">18h 45m escuchado</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="song-actions">
+                                <div class="play-count">
+                                    <div class="play-bar">
+                                        <div class="play-fill" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                                <button class="action-btn like-btn">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="action-btn">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="top-song-item" data-rank="3">
+                            <div class="song-rank">
+                                <div class="rank-number">3</div>
+                                <div class="rank-change up">
+                                    <i class="fas fa-arrow-up"></i>
+                                </div>
+                            </div>
+                            <div class="song-content">
+                                <div class="song-cover">
+                                    <img src="assets/img/song3.jpg" alt="Velvet Moon">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="song-details">
+                                    <h4>Velvet Moon</h4>
+                                    <p>Indigo Soul</p>
+                                    <div class="song-stats">
+                                        <span class="plays">924 reproducciones</span>
+                                        <span class="listening-time">15h 32m escuchado</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="song-actions">
+                                <div class="play-count">
+                                    <div class="play-bar">
+                                        <div class="play-fill" style="width: 74%;"></div>
+                                    </div>
+                                </div>
+                                <button class="action-btn like-btn">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="action-btn">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="top-song-item" data-rank="4">
+                            <div class="song-rank">
+                                <div class="rank-number">4</div>
+                                <div class="rank-change down">
+                                    <i class="fas fa-arrow-down"></i>
+                                </div>
+                            </div>
+                            <div class="song-content">
+                                <div class="song-cover">
+                                    <img src="assets/img/artist1.jpg" alt="Electric Dreams">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="song-details">
+                                    <h4>Electric Dreams</h4>
+                                    <p>Luna</p>
+                                    <div class="song-stats">
+                                        <span class="plays">756 reproducciones</span>
+                                        <span class="listening-time">12h 38m escuchado</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="song-actions">
+                                <div class="play-count">
+                                    <div class="play-bar">
+                                        <div class="play-fill" style="width: 61%;"></div>
+                                    </div>
+                                </div>
+                                <button class="action-btn like-btn">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="action-btn">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="top-song-item" data-rank="5">
+                            <div class="song-rank">
+                                <div class="rank-number">5</div>
+                                <div class="rank-change up">
+                                    <i class="fas fa-arrow-up"></i>
+                                </div>
+                            </div>
+                            <div class="song-content">
+                                <div class="song-cover">
+                                    <img src="assets/img/artist2.jpg" alt="Neon Paradise">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="song-details">
+                                    <h4>Neon Paradise</h4>
+                                    <p>Synth Babe</p>
+                                    <div class="song-stats">
+                                        <span class="plays">683 reproducciones</span>
+                                        <span class="listening-time">11h 22m escuchado</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="song-actions">
+                                <div class="play-count">
+                                    <div class="play-bar">
+                                        <div class="play-fill" style="width: 55%;"></div>
+                                    </div>
+                                </div>
+                                <button class="action-btn like-btn">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                                <button class="action-btn">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="show-more-btn">
+                        <span>Ver más canciones</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </section>
+
+                <!-- Top Artists -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2>
+                            <i class="fas fa-crown crown-icon"></i>
+                            Tus artistas más reproducidos
+                        </h2>
+                        <a href="#" class="show-all">Ver todo</a>
+                    </div>
+
+                    <div class="top-artists-grid">
+                        <div class="top-artist-card" data-rank="1">
+                            <div class="artist-rank">1</div>
+                            <div class="artist-image">
+                                <img src="assets/img/artist1.jpg" alt="Luna">
+                                <div class="play-overlay">
+                                    <button class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="artist-info">
+                                <h3>Luna</h3>
+                                <p class="artist-genre">Electronic • Ambient</p>
+                                <div class="artist-stats">
+                                    <span class="total-plays">3,247 plays</span>
+                                    <span class="total-time">54h 12m</span>
+                                </div>
+                            </div>
+                            <button class="follow-btn following">
+                                <i class="fas fa-check"></i>
+                                Siguiendo
+                            </button>
+                        </div>
+
+                        <div class="top-artist-card" data-rank="2">
+                            <div class="artist-rank">2</div>
+                            <div class="artist-image">
+                                <img src="assets/img/artist2.jpg" alt="Synth Babe">
+                                <div class="play-overlay">
+                                    <button class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="artist-info">
+                                <h3>Synth Babe</h3>
+                                <p class="artist-genre">Synthwave • Electronic</p>
+                                <div class="artist-stats">
+                                    <span class="total-plays">2,891 plays</span>
+                                    <span class="total-time">48h 35m</span>
+                                </div>
+                            </div>
+                            <button class="follow-btn following">
+                                <i class="fas fa-check"></i>
+                                Siguiendo
+                            </button>
+                        </div>
+
+                        <div class="top-artist-card" data-rank="3">
+                            <div class="artist-rank">3</div>
+                            <div class="artist-image">
+                                <img src="assets/img/artist3.jpg" alt="Echo Wave">
+                                <div class="play-overlay">
+                                    <button class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="artist-info">
+                                <h3>Echo Wave</h3>
+                                <p class="artist-genre">Ambient • Chill</p>
+                                <div class="artist-stats">
+                                    <span class="total-plays">2,156 plays</span>
+                                    <span class="total-time">38h 47m</span>
+                                </div>
+                            </div>
+                            <button class="follow-btn">
+                                <i class="fas fa-plus"></i>
+                                Seguir
+                            </button>
+                        </div>
+
+                        <div class="top-artist-card" data-rank="4">
+                            <div class="artist-rank">4</div>
+                            <div class="artist-image">
+                                <img src="assets/img/song1.jpg" alt="Dreamy Sound">
+                                <div class="play-overlay">
+                                    <button class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="artist-info">
+                                <h3>Dreamy Sound</h3>
+                                <p class="artist-genre">Dream Pop • Indie</p>
+                                <div class="artist-stats">
+                                    <span class="total-plays">1,743 plays</span>
+                                    <span class="total-time">29h 18m</span>
+                                </div>
+                            </div>
+                            <button class="follow-btn following">
+                                <i class="fas fa-check"></i>
+                                Siguiendo
+                            </button>
+                        </div>
+
+                        <div class="top-artist-card" data-rank="5">
+                            <div class="artist-rank">5</div>
+                            <div class="artist-image">
+                                <img src="assets/img/song2.jpg" alt="Indigo Soul">
+                                <div class="play-overlay">
+                                    <button class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="artist-info">
+                                <h3>Indigo Soul</h3>
+                                <p class="artist-genre">Soul • R&B</p>
+                                <div class="artist-stats">
+                                    <span class="total-plays">1,287 plays</span>
+                                    <span class="total-time">21h 55m</span>
+                                </div>
+                            </div>
+                            <button class="follow-btn">
+                                <i class="fas fa-plus"></i>
+                                Seguir
+                            </button>
+                        </div>
+
+                        <div class="top-artist-card" data-rank="6">
+                            <div class="artist-rank">6</div>
+                            <div class="artist-image">
+                                <img src="assets/img/song3.jpg" alt="Cosmic Waves">
+                                <div class="play-overlay">
+                                    <button class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="artist-info">
+                                <h3>Cosmic Waves</h3>
+                                <p class="artist-genre">Space Ambient</p>
+                                <div class="artist-stats">
+                                    <span class="total-plays">956 plays</span>
+                                    <span class="total-time">16h 32m</span>
+                                </div>
+                            </div>
+                            <button class="follow-btn">
+                                <i class="fas fa-plus"></i>
+                                Seguir
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Listening Habits -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2>
+                            <i class="fas fa-chart-line chart-icon"></i>
+                            Tus hábitos de escucha
+                        </h2>
+                    </div>
+
+                    <div class="habits-grid">
+                        <div class="habit-card">
+                            <div class="habit-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="habit-info">
+                                <h3>Horario favorito</h3>
+                                <p class="habit-value">9:00 PM - 12:00 AM</p>
+                                <span class="habit-detail">78% de tu música nocturna</span>
+                            </div>
+                        </div>
+
+                        <div class="habit-card">
+                            <div class="habit-icon">
+                                <i class="fas fa-calendar-week"></i>
+                            </div>
+                            <div class="habit-info">
+                                <h3>Día más activo</h3>
+                                <p class="habit-value">Viernes</p>
+                                <span class="habit-detail">23% más que otros días</span>
+                            </div>
+                        </div>
+
+                        <div class="habit-card">
+                            <div class="habit-icon">
+                                <i class="fas fa-repeat"></i>
+                            </div>
+                            <div class="habit-info">
+                                <h3>Canción en repeat</h3>
+                                <p class="habit-value">Midnight Vibes</p>
+                                <span class="habit-detail">Reproducida 47 veces seguidas</span>
+                            </div>
+                        </div>
+
+                        <div class="habit-card">
+                            <div class="habit-icon">
+                                <i class="fas fa-tags"></i>
+                            </div>
+                            <div class="habit-info">
+                                <h3>Género favorito</h3>
+                                <p class="habit-value">Electronic</p>
+                                <span class="habit-detail">42% de tu biblioteca</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recently Played History -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2>
+                            <i class="fas fa-history history-icon"></i>
+                            Historial reciente
+                        </h2>
+                        <a href="#" class="show-all">Ver todo</a>
+                    </div>
+
+                    <div class="history-timeline">
+                        <div class="history-item">
+                            <div class="history-time">Hace 2 min</div>
+                            <div class="history-content">
+                                <img src="assets/img/song1.jpg" alt="Midnight Vibes">
+                                <div class="history-info">
+                                    <h4>Midnight Vibes</h4>
+                                    <p>Dreamy Sound</p>
+                                </div>
+                                <div class="history-duration">Completada</div>
+                            </div>
+                        </div>
+
+                        <div class="history-item">
+                            <div class="history-time">Hace 7 min</div>
+                            <div class="history-content">
+                                <img src="assets/img/song2.jpg" alt="City Lights">
+                                <div class="history-info">
+                                    <h4>City Lights</h4>
+                                    <p>Luna & The Echo</p>
+                                </div>
+                                <div class="history-duration">3:45</div>
+                            </div>
+                        </div>
+
+                        <div class="history-item">
+                            <div class="history-time">Hace 12 min</div>
+                            <div class="history-content">
+                                <img src="assets/img/song3.jpg" alt="Velvet Moon">
+                                <div class="history-info">
+                                    <h4>Velvet Moon</h4>
+                                    <p>Indigo Soul</p>
+                                </div>
+                                <div class="history-duration">2:18</div>
+                            </div>
+                        </div>
+
+                        <div class="history-item">
+                            <div class="history-time">Hace 18 min</div>
+                            <div class="history-content">
+                                <img src="assets/img/artist1.jpg" alt="Electric Dreams">
+                                <div class="history-info">
+                                    <h4>Electric Dreams</h4>
+                                    <p>Luna</p>
+                                </div>
+                                <div class="history-duration">Completada</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Bottom Player -->
+        <div class="bottom-player">
+            <div class="player-left">
+                <div class="track-info">
+                    <img src="assets/img/song1.jpg" alt="Current track" class="track-image">
+                    <div class="track-details">
+                        <h4>Midnight Vibes</h4>
+                        <p>Dreamy Sound</p>
+                    </div>
+                    <button class="like-btn liked">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="player-center">
+                <div class="player-controls">
+                    <button class="control-btn shuffle">
+                        <i class="fas fa-random"></i>
+                    </button>
+                    <button class="control-btn prev">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="control-btn play-pause main-play">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="control-btn next">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                    <button class="control-btn repeat active">
+                        <i class="fas fa-redo-alt"></i>
+                    </button>
+                </div>
+                <div class="progress-container">
+                    <span class="time current-time">2:31</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%;"></div>
+                        <div class="progress-handle"></div>
+                    </div>
+                    <span class="time total-time">3:45</span>
+                </div>
+            </div>
+
+            <div class="player-right">
+                <button class="control-btn">
+                    <i class="fas fa-list-ul"></i>
+                </button>
+                <button class="control-btn">
+                    <i class="fas fa-desktop"></i>
+                </button>
+                <div class="volume-container">
+                    <button class="control-btn volume-btn">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="volume-bar">
+                        <div class="volume-fill" style="width: 85%;"></div>
+                        <div class="volume-handle"></div>
+                    </div>
+                </div>
+                <button class="control-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

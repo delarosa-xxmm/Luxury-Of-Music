@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Recomendados - Luxury Of Music</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="shortcut icon" href="assets/img/ajooo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <img src="assets/img/ajooo.png" alt="Luxury Logo"/>
+                <span>Luxury</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-main">
+                    <li class="nav-item">
+                        <a href="index.html">
+                            <i class="fas fa-home"></i>
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-search"></i>
+                            <span>Buscar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-th-large"></i>
+                            <span>Tu biblioteca</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="nav-divider"></div>
+
+                <ul class="nav-library">
+                    <li class="nav-item">
+                        <a href="favoritos.html">
+                            <i class="fas fa-heart"></i>
+                            <span>Tus favoritos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="recomendados.html">
+                            <i class="fas fa-star"></i>
+                            <span>Recomendados</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reproducidos.html">
+                            <i class="fas fa-fire"></i>
+                            <span>Más reproducidos</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="premium-card">
+                    <i class="fas fa-crown"></i>
+                    <h4>Obtén Premium</h4>
+                    <p>Música sin anuncios, descargas ilimitadas</p>
+                    <button class="btn-premium">Actualizar</button>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="nav-buttons">
+                    <button class="nav-btn back">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-btn forward">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar recomendaciones..." class="search-input">
+                    </div>
+                </div>
+
+                <div class="user-menu">
+                    <button class="user-btn">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Featured Recommendation -->
+                <section class="featured-recommendation">
+                    <div class="featured-content">
+                        <div class="featured-image">
+                            <img src="assets/img/song1.jpg" alt="Mix del día">
+                            <div class="featured-overlay">
+                                <button class="featured-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="featured-info">
+                            <span class="featured-badge">RECOMENDACIÓN ESPECIAL</span>
+                            <h1 class="featured-title">Tu Mix Diario</h1>
+                            <p class="featured-description">Una mezcla personalizada de tus géneros favoritos con nuevos descubrimientos que pensamos que te encantarán</p>
+                            <div class="featured-stats">
+                                <span><i class="fas fa-music"></i> 30 canciones</span>
+                                <span><i class="fas fa-clock"></i> 2 h 15 min</span>
+                                <span><i class="fas fa-fire"></i> Actualizado hoy</span>
+                            </div>
+                            <div class="featured-actions">
+                                <button class="btn-play-featured">
+                                    <i class="fas fa-play"></i>
+                                    Reproducir
+                                </button>
+                                <button class="btn-follow">
+                                    <i class="fas fa-plus"></i>
+                                    Seguir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Categories -->
+                <section class="categories-section">
+                    <h2 class="section-title">Explorar por género</h2>
+                    <div class="categories-grid">
+                        <div class="category-card" style="background: linear-gradient(135deg, #ff1493, #ff69b4);">
+                            <h3>Pop</h3>
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <div class="category-card" style="background: linear-gradient(135deg, #4169e1, #00bfff);">
+                            <h3>Electronic</h3>
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="category-card" style="background: linear-gradient(135deg, #ff69b4, #4169e1);">
+                            <h3>Indie</h3>
+                            <i class="fas fa-guitar"></i>
+                        </div>
+                        <div class="category-card" style="background: linear-gradient(135deg, #c71585, #1e3a5f);">
+                            <h3>Chill</h3>
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="category-card" style="background: linear-gradient(135deg, #ff00ff, #4169e1);">
+                            <h3>Ambient</h3>
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="category-card" style="background: linear-gradient(135deg, #ff1493, #2d4a6b);">
+                            <h3>Synthwave</h3>
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Discover Weekly -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2>Descubrimiento semanal</h2>
+                        <a href="#" class="show-all">Ver todo</a>
+                    </div>
+                    <div class="horizontal-scroll">
+                        <div class="card-container">
+                            <div class="music-card featured-card">
+                                <div class="card-image">
+                                    <img src="assets/img/song2.jpg" alt="Cosmic Journey">
+                                    <div class="featured-badge-card">NUEVO</div>
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Cosmic Journey</h3>
+                                    <p>Stellar Waves • Nuevo lanzamiento</p>
+                                </div>
+                            </div>
+                            
+                            <div class="music-card">
+                                <div class="card-image">
+                                    <img src="assets/img/artist1.jpg" alt="Aurora Dreams">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Aurora Dreams</h3>
+                                    <p>Luna • Similar a tus gustos</p>
+                                </div>
+                            </div>
+
+                            <div class="music-card">
+                                <div class="card-image">
+                                    <img src="assets/img/artist2.jpg" alt="Neon Nights">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Neon Nights</h3>
+                                    <p>Synth Babe • Tendencia</p>
+                                </div>
+                            </div>
+
+                            <div class="music-card">
+                                <div class="card-image">
+                                    <img src="assets/img/song3.jpg" alt="Deep Space">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Deep Space</h3>
+                                    <p>Echo Wave • Recomendado</p>
+                                </div>
+                            </div>
+
+                            <div class="music-card">
+                                <div class="card-image">
+                                    <img src="assets/img/artist3.jpg" alt="Ethereal Moments">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Ethereal Moments</h3>
+                                    <p>Ambient Collective • Para ti</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Based on Recent Activity -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2>Basado en tu actividad reciente</h2>
+                        <a href="#" class="show-all">Ver todo</a>
+                    </div>
+                    <div class="horizontal-scroll">
+                        <div class="card-container">
+                            <div class="music-card">
+                                <div class="card-image">
+                                    <img src="assets/img/song1.jpg" alt="Radio Midnight">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Radio Midnight Vibes</h3>
+                                    <p>Con Dreamy Sound y más</p>
+                                </div>
+                            </div>
+                            
+                            <div class="music-card">
+                                <div class="card-image">
+                                    <img src="assets/img/song2.jpg" alt="Urban Mix">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Urban Mix</h3>
+                                    <p>Inspirado en City Lights</p>
+                                </div>
+                            </div>
+
+                            <div class="music-card">
+                                <div class="card-image">
+                                    <img src="assets/img/artist1.jpg" alt="Luna Radio">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Radio Luna</h3>
+                                    <p>Porque escuchaste a Luna</p>
+                                </div>
+                            </div>
+
+                            <div class="music-card">
+                                <div class="card-image">
+                                    <img src="assets/img/artist2.jpg" alt="Synth Collection">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Synth Collection</h3>
+                                    <p>Más como Synth Babe</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- New Releases -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2>Nuevos lanzamientos para ti</h2>
+                        <a href="#" class="show-all">Ver todo</a>
+                    </div>
+                    <div class="horizontal-scroll">
+                        <div class="card-container">
+                            <div class="music-card">
+                                <div class="card-image">
+                                    <img src="assets/img/song3.jpg" alt="Future Dreams">
+                                    <div class="new-badge">NUEVO</div>
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Future Dreams</h3>
+                                    <p>Cosmic Waves • Álbum nuevo</p>
+                                </div>
+                            </div>
+                            
+                            <div class="music-card">
+                                <div class="card-image">
+                                    <img src="assets/img/artist3.jpg" alt="Resonance">
+                                    <div class="new-badge">HOY</div>
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Resonance</h3>
+                                    <p>Echo Wave • Single</p>
+                                </div>
+                            </div>
+
+                            <div class="music-card">
+                                <div class="card-image">
+                                    <img src="assets/img/artist1.jpg" alt="Luna EP">
+                                    <div class="new-badge">ESTA SEMANA</div>
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Stellar EP</h3>
+                                    <p>Luna • EP</p>
+                                </div>
+                            </div>
+
+                            <div class="music-card">
+                                <div class="card-image">
+                                    <img src="assets/img/song1.jpg" alt="Midnight Sessions">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Midnight Sessions</h3>
+                                    <p>Dreamy Sound • Álbum</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Trending Now -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2>
+                            <i class="fas fa-fire trending-icon"></i>
+                            Tendencias ahora
+                        </h2>
+                        <a href="#" class="show-all">Ver todo</a>
+                    </div>
+                    <div class="trending-grid">
+                        <div class="trending-item">
+                            <div class="trending-rank">1</div>
+                            <div class="trending-cover">
+                                <img src="assets/img/song2.jpg" alt="Viral Hit">
+                                <button class="trending-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="trending-info">
+                                <h4>Viral Nights</h4>
+                                <p>Electronic Pulse</p>
+                                <div class="trending-stats">
+                                    <span class="plays">2.3M plays</span>
+                                    <span class="trend up">
+                                        <i class="fas fa-arrow-up"></i>
+                                        +127%
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trending-item">
+                            <div class="trending-rank">2</div>
+                            <div class="trending-cover">
+                                <img src="assets/img/artist2.jpg" alt="Synth Paradise">
+                                <button class="trending-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="trending-info">
+                                <h4>Synth Paradise</h4>
+                                <p>Synth Babe</p>
+                                <div class="trending-stats">
+                                    <span class="plays">1.8M plays</span>
+                                    <span class="trend up">
+                                        <i class="fas fa-arrow-up"></i>
+                                        +89%
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trending-item">
+                            <div class="trending-rank">3</div>
+                            <div class="trending-cover">
+                                <img src="assets/img/song3.jpg" alt="Moonbeam">
+                                <button class="trending-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="trending-info">
+                                <h4>Moonbeam</h4>
+                                <p>Indigo Soul</p>
+                                <div class="trending-stats">
+                                    <span class="plays">1.5M plays</span>
+                                    <span class="trend up">
+                                        <i class="fas fa-arrow-up"></i>
+                                        +76%
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trending-item">
+                            <div class="trending-rank">4</div>
+                            <div class="trending-cover">
+                                <img src="assets/img/artist1.jpg" alt="Crystal Waves">
+                                <button class="trending-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="trending-info">
+                                <h4>Crystal Waves</h4>
+                                <p>Luna</p>
+                                <div class="trending-stats">
+                                    <span class="plays">1.2M plays</span>
+                                    <span class="trend up">
+                                        <i class="fas fa-arrow-up"></i>
+                                        +45%
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Mood Playlists -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2>Playlists según tu estado de ánimo</h2>
+                        <a href="#" class="show-all">Ver todo</a>
+                    </div>
+                    <div class="horizontal-scroll">
+                        <div class="card-container">
+                            <div class="mood-card" data-mood="happy">
+                                <div class="mood-icon">😊</div>
+                                <h3>Feliz</h3>
+                                <p>Música para celebrar</p>
+                                <div class="mood-overlay">
+                                    <button class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mood-card" data-mood="chill">
+                                <div class="mood-icon">😌</div>
+                                <h3>Relajado</h3>
+                                <p>Para desconectar</p>
+                                <div class="mood-overlay">
+                                    <button class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mood-card" data-mood="focus">
+                                <div class="mood-icon">🧠</div>
+                                <h3>Concentración</h3>
+                                <p>Música para trabajar</p>
+                                <div class="mood-overlay">
+                                    <button class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mood-card" data-mood="energy">
+                                <div class="mood-icon">⚡</div>
+                                <h3>Energía</h3>
+                                <p>Para activarte</p>
+                                <div class="mood-overlay">
+                                    <button class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mood-card" data-mood="romance">
+                                <div class="mood-icon">💕</div>
+                                <h3>Romance</h3>
+                                <p>Canciones de amor</p>
+                                <div class="mood-overlay">
+                                    <button class="play-btn">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Similar Artists -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2>Artistas que podrían gustarte</h2>
+                        <a href="#" class="show-all">Ver todo</a>
+                    </div>
+                    <div class="horizontal-scroll">
+                        <div class="card-container">
+                            <div class="artist-card recommended">
+                                <div class="artist-image">
+                                    <img src="assets/img/artist1.jpg" alt="Cosmic Dreamer">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="artist-info">
+                                    <h3>Cosmic Dreamer</h3>
+                                    <p>Similar a Luna</p>
+                                    <button class="follow-btn">Seguir</button>
+                                </div>
+                            </div>
+
+                            <div class="artist-card recommended">
+                                <div class="artist-image">
+                                    <img src="assets/img/artist2.jpg" alt="Neon Queen">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="artist-info">
+                                    <h3>Neon Queen</h3>
+                                    <p>Similar a Synth Babe</p>
+                                    <button class="follow-btn">Seguir</button>
+                                </div>
+                            </div>
+
+                            <div class="artist-card recommended">
+                                <div class="artist-image">
+                                    <img src="assets/img/artist3.jpg" alt="Deep Current">
+                                    <div class="play-overlay">
+                                        <button class="play-btn">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="artist-info">
+                                    <h3>Deep Current</h3>
+                                    <p>Similar a Echo Wave</p>
+                                    <button class="follow-btn">Seguir</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Bottom Player -->
+        <div class="bottom-player">
+            <div class="player-left">
+                <div class="track-info">
+                    <img src="assets/img/song2.jpg" alt="Current track" class="track-image">
+                    <div class="track-details">
+                        <h4>Cosmic Journey</h4>
+                        <p>Stellar Waves</p>
+                    </div>
+                    <button class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="player-center">
+                <div class="player-controls">
+                    <button class="control-btn shuffle">
+                        <i class="fas fa-random"></i>
+                    </button>
+                    <button class="control-btn prev">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="control-btn play-pause main-play">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="control-btn next">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                    <button class="control-btn repeat">
+                        <i class="fas fa-redo-alt"></i>
+                    </button>
+                </div>
+                <div class="progress-container">
+                    <span class="time current-time">0:00</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                        <div class="progress-handle"></div>
+                    </div>
+                    <span class="time total-time">4:32</span>
+                </div>
+            </div>
+
+            <div class="player-right">
+                <button class="control-btn">
+                    <i class="fas fa-list-ul"></i>
+                </button>
+                <button class="control-btn">
+                    <i class="fas fa-desktop"></i>
+                </button>
+                <div class="volume-container">
+                    <button class="control-btn volume-btn">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="volume-bar">
+                        <div class="volume-fill" style="width: 70%;"></div>
+                        <div class="volume-handle"></div>
+                    </div>
+                </div>
+                <button class="control-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
