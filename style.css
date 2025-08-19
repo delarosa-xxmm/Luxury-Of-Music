@@ -2174,3 +2174,341 @@ body::before {
         width: 100% !important;
     }
 }
+
+/* ============================================
+   MEJORAS MÓVILES PREMIUM ADICIONALES
+   Copiar este código debajo de tu CSS existente
+   ============================================ */
+
+/* Mejoras para pantallas móviles pequeñas */
+@media (max-width: 600px) {
+    /* Espaciado móvil optimizado */
+    .content-wrapper {
+        padding: 12px 8px;
+    }
+    
+    /* Hero móvil mejorado */
+    .hero-title {
+        font-size: 22px;
+        line-height: 1.2;
+        margin-bottom: 8px;
+    }
+    
+    .hero-subtitle {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    
+    /* Quick picks móvil premium */
+    .quick-pick-item {
+        height: 52px;
+        border-radius: 10px;
+        margin-bottom: 6px;
+        backdrop-filter: blur(10px);
+    }
+    
+    .quick-pick-cover {
+        width: 52px;
+        height: 52px;
+    }
+    
+    .quick-pick-title {
+        font-size: 11px;
+        font-weight: 500;
+        padding: 0 10px;
+    }
+    
+    .play-btn-quick {
+        width: 36px;
+        height: 36px;
+        right: 8px;
+    }
+    
+    /* Cards móvil con efectos premium */
+    .music-card,
+    .artist-card {
+        min-width: 110px;
+        padding: 10px;
+        backdrop-filter: blur(8px);
+    }
+    
+    .card-title {
+        font-size: 11px;
+        font-weight: 600;
+    }
+    
+    .card-subtitle {
+        font-size: 10px;
+        opacity: 0.8;
+    }
+    
+    /* Secciones móvil */
+    .section {
+        margin-bottom: 24px;
+    }
+    
+    .section-title {
+        font-size: 17px;
+        margin-bottom: 12px;
+    }
+    
+    .horizontal-scroll {
+        margin: 0 -8px;
+        padding: 8px;
+    }
+    
+    .card-container {
+        gap: 12px;
+    }
+}
+
+/* Mejoras para pantallas ultra pequeñas */
+@media (max-width: 360px) {
+    .content-wrapper {
+        padding: 10px 6px;
+    }
+    
+    .hero-title {
+        font-size: 20px;
+    }
+    
+    .quick-pick-item {
+        height: 48px;
+    }
+    
+    .quick-pick-cover {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .quick-pick-title {
+        font-size: 10px;
+    }
+    
+    .play-btn-quick {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .music-card,
+    .artist-card {
+        min-width: 100px;
+        padding: 8px;
+    }
+}
+
+/* Efectos táctiles premium para móvil */
+@media (hover: none) and (pointer: coarse) {
+    /* Feedback táctil instantáneo */
+    .quick-pick-item:active {
+        transform: scale(0.98);
+        background: rgba(233, 30, 99, 0.2);
+        transition: all 0.1s ease;
+    }
+    
+    .music-card:active,
+    .artist-card:active {
+        transform: scale(0.96);
+        background: rgba(233, 30, 99, 0.15);
+    }
+    
+    .nav-item a:active {
+        background: rgba(233, 30, 99, 0.2);
+        transform: scale(0.98);
+    }
+    
+    .btn-premium:active {
+        transform: scale(0.95);
+        background: rgba(255, 255, 255, 0.4);
+    }
+    
+    .play-btn:active,
+    .play-btn-quick:active {
+        transform: scale(0.9);
+        box-shadow: 0 0 20px rgba(233, 30, 99, 0.8);
+    }
+    
+    /* Estados visibles permanentes en móvil */
+    .quick-pick-item .play-btn-quick {
+        opacity: 1;
+        background: linear-gradient(135deg, #e91e63, #ff4081);
+        box-shadow: 0 2px 10px rgba(233, 30, 99, 0.4);
+    }
+    
+    .nav-item.active a {
+        background: rgba(233, 30, 99, 0.15);
+        box-shadow: 0 0 15px rgba(233, 30, 99, 0.3);
+    }
+}
+
+/* Mejoras específicas para iOS */
+@supports (-webkit-appearance: none) {
+    .search-input {
+        font-size: 16px; /* Previene zoom automático en iOS */
+        -webkit-appearanc: none;
+    }
+    
+    .sidebar {
+        -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+    }
+    
+    .horizontal-scroll {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Mejora el tap en iOS */
+    .quick-pick-item,
+    .music-card,
+    .artist-card,
+    .nav-item a {
+        -webkit-tap-highlight-color: rgba(233, 30, 99, 0.2);
+        -webkit-touch-callout: none;
+    }
+}
+
+/* Mejoras para Android */
+@media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+    .quick-pick-item {
+        border: 1px solid rgba(233, 30, 99, 0.15);
+    }
+    
+    .music-card,
+    .artist-card {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Mejor contraste en Android */
+    .card-title {
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    
+    .hero-title {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Optimizaciones de rendimiento móvil */
+@media (max-width: 768px) {
+    /* Reduce animaciones complejas en móvil */
+    .premium-card::before {
+        animation-duration: 4s; /* Más lenta para ahorrar batería */
+    }
+    
+    /* Optimiza transforms para GPU */
+    .quick-pick-item,
+    .music-card,
+    .artist-card {
+        transform: translateZ(0); /* Fuerza aceleración GPU */
+        will-change: transform;
+    }
+    
+    /* Reduce blur en móvil para mejor rendimiento */
+    .top-bar {
+        backdrop-filter: blur(15px);
+    }
+    
+    .sidebar {
+        backdrop-filter: blur(15px);
+    }
+    
+    .search-box,
+    .user-btn {
+        backdrop-filter: blur(8px);
+    }
+}
+
+/* Mejoras para pantallas plegables */
+@media (max-width: 768px) and (orientation: landscape) {
+    .quick-picks {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .content-wrapper {
+        padding: 16px 12px;
+    }
+    
+    .hero-title {
+        font-size: 24px;
+    }
+}
+
+/* Dark mode específico móvil */
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+    .quick-pick-item {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(233, 30, 99, 0.2);
+    }
+    
+    .music-card,
+    .artist-card {
+        background: rgba(255, 255, 255, 0.06);
+    }
+    
+    .top-bar {
+        background: rgba(0, 0, 0, 0.8);
+        border-bottom-color: rgba(233, 30, 99, 0.3);
+    }
+}
+
+/* Mejoras de accesibilidad móvil */
+@media (max-width: 768px) {
+    /* Aumenta áreas de toque */
+    .nav-item a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .show-all {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .user-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Mejora contraste en móvil */
+    .card-subtitle {
+        color: #bdbdbd; /* Mejor contraste */
+    }
+    
+    .hero-subtitle {
+        color: #bdbdbd;
+    }
+}
+
+/* Animaciones específicas móvil */
+@media (max-width: 768px) {
+    @keyframes mobile-glow {
+        0%, 100% { 
+            box-shadow: 0 0 10px rgba(233, 30, 99, 0.3);
+        }
+        50% { 
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
+        }
+    }
+    
+    .nav-item.active a {
+        animation: mobile-glow 2s ease-in-out infinite;
+    }
+    
+    /* Efecto de carga móvil */
+    .loading-mobile {
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(233, 30, 99, 0.2) 50%, 
+            transparent 100%);
+        background-size: 200% 100%;
+        animation: mobile-shimmer 1s ease-in-out infinite;
+    }
+    
+    @keyframes mobile-shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+    }
+}
