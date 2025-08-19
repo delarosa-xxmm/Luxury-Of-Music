@@ -3,14 +3,865 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Más Reproducidos - Luxury Of Music</title>
-    <link rel="stylesheet" href="style_reproducidos.css"/>
+    <title>Más Reproducidos - Luxury</title>
     <link rel="shortcut icon" href="assets/img/ajooo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a0a 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar Premium */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, rgba(26, 10, 26, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 20, 147, 0.1);
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, transparent 0%, #ff1493 50%, transparent 100%);
+            opacity: 0.3;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .logo-section img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+
+        .logo-section span {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-main, .nav-library {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .nav-item {
+            margin-bottom: 4px;
+        }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 105, 180, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .nav-item a:hover::before {
+            opacity: 1;
+        }
+
+        .nav-item.active a {
+            background: linear-gradient(135deg, rgba(255, 20, 147, 0.2), rgba(255, 105, 180, 0.1));
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(255, 20, 147, 0.15);
+        }
+
+        .nav-item.active a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 16px;
+            background: linear-gradient(180deg, #ff1493, #ff69b4);
+            border-radius: 0 2px 2px 0;
+        }
+
+        .nav-item a i {
+            width: 20px;
+            font-size: 16px;
+        }
+
+        .premium-card {
+            background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 105, 180, 0.05));
+            border: 1px solid rgba(255, 20, 147, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .premium-card i {
+            font-size: 28px;
+            color: #ff1493;
+            margin-bottom: 12px;
+        }
+
+        .premium-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .premium-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 16px;
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a0a 100%);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 32px;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 20, 147, 0.2);
+            color: #ff1493;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 32px;
+            position: relative;
+        }
+
+        .search-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+        }
+
+        .search-box:focus-within {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 20, 147, 0.5);
+            box-shadow: 0 4px 20px rgba(255, 20, 147, 0.1);
+        }
+
+        .search-input {
+            background: none;
+            border: none;
+            color: white;
+            flex: 1;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .user-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .content-wrapper {
+            padding: 32px;
+            flex: 1;
+        }
+
+        /* Page Header */
+        .top-tracks-header {
+            margin-bottom: 32px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+        }
+
+        .page-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffffff, #ff69b4);
+            -webkit-background-cli: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+        }
+
+        /* Stats Overview */
+        .stats-overview {
+            margin-bottom: 48px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 20, 147, 0.1);
+            border-color: rgba(255, 20, 147, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+        }
+
+        .stat-info h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: white;
+        }
+
+        .stat-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        /* Top Songs List */
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .trophy-icon {
+            color: #ff1493;
+        }
+
+        .top-songs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .top-song-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .top-song-item:hover {
+            background: rgba(255, 20, 147, 0.1);
+            transform: translateY(-2px);
+            border-color: rgba(255, 20, 147, 0.3);
+        }
+
+        .song-rank {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            min-width: 40px;
+        }
+
+        .rank-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff1493;
+        }
+
+        .rank-change {
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 12px;
+        }
+
+        .rank-change.up {
+            color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .rank-change.down {
+            color: #ff4444;
+            background: rgba(255, 68, 68, 0.1);
+        }
+
+        .rank-change.same {
+            color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .song-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .song-cover {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .song-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .top-song-item:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            border: none;
+            color: white;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .song-details h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .song-details p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .song-stats {
+            display: flex;
+            gap: 16px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .song-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .play-count {
+            width: 100px;
+        }
+
+        .play-bar {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .play-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff1493, #ff69b4);
+            border-radius: 2px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .action-btn:hover {
+            color: #ff1493;
+            background: rgba(255, 20, 147, 0.1);
+        }
+
+        .like-btn.liked {
+            color: #ff1493;
+        }
+
+        /* Top Artists Grid */
+        .top-artists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .top-artist-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .top-artist-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 20, 147, 0.1);
+            border-color: rgba(255, 20, 147, 0.3);
+        }
+
+        .artist-rank {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .artist-image {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .artist-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .artist-info h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .artist-genre {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .artist-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 16px;
+        }
+
+        .follow-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .follow-btn:hover {
+            background: rgba(255, 20, 147, 0.2);
+            border-color: rgba(255, 20, 147, 0.5);
+        }
+
+        .follow-btn.following {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            border-color: transparent;
+        }
+
+        /* Bottom Player */
+        .bottom-player {
+            background: linear-gradient(135deg, rgba(26, 10, 26, 0.95), rgba(10, 10, 10, 0.98));
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 20, 147, 0.2);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            bottom: 0;
+        }
+
+        .player-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .track-image {
+            width: 56px;
+            height: 56px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .track-details h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .track-details p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .like-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s;
+            margin-left: 12px;
+        }
+
+        .like-btn:hover, .like-btn.liked {
+            color: #ff1493;
+        }
+
+        .player-center {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 8px;
+        }
+
+        .control-btn:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .control-btn.active {
+            color: #ff1493;
+        }
+
+        .main-play {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            font-size: 16px;
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .time {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            min-width: 40px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff1493, #ff69b4);
+            border-radius: 2px;
+            transition: width 0.1s;
+        }
+
+        .player-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 16px;
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .volume-bar {
+            width: 80px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .volume-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff1493, #ff69b4);
+            border-radius: 2px;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 20, 147, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 20, 147, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 70px;
+                padding: 20px 8px;
+            }
+            
+            .logo-section span,
+            .nav-item span {
+                display: none;
+            }
+            
+            .premium-card {
+                display: none;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .song-stats {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="app-container">
-        <!-- Sidebar Navigation -->
+        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo-section">
                 <img src="assets/img/ajooo.png" alt="Luxury Logo"/>
@@ -38,8 +889,6 @@
                         </a>
                     </li>
                 </ul>
-
-                <div class="nav-divider"></div>
 
                 <ul class="nav-library">
                     <li class="nav-item">
@@ -98,7 +947,7 @@
             </header>
 
             <div class="content-wrapper">
-                <!-- Top Tracks Header -->
+                <!-- Page Header -->
                 <section class="top-tracks-header">
                     <div class="header-content">
                         <div class="header-icon">
@@ -108,16 +957,6 @@
                             <h1 class="page-title">Más Reproducidos</h1>
                             <p class="page-description">Tus canciones y artistas con más reproducciones de todos los tiempos</p>
                         </div>
-                    </div>
-                </section>
-
-                <!-- Time Period Selector -->
-                <section class="time-selector">
-                    <div class="time-tabs">
-                        <button class="time-tab active" data-period="all">Todo el tiempo</button>
-                        <button class="time-tab" data-period="year">Este año</button>
-                        <button class="time-tab" data-period="6months">Últimos 6 meses</button>
-                        <button class="time-tab" data-period="month">Este mes</button>
                     </div>
                 </section>
 
@@ -153,583 +992,4 @@
                         </div>
                         <div class="stat-card">
                             <div class="stat-icon">
-                                <i class="fas fa-user-music"></i>
-                            </div>
-                            <div class="stat-info">
-                                <h3>42</h3>
-                                <p>Artistas diferentes</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Top Songs -->
-                <section class="section">
-                    <div class="section-header">
-                        <h2>
-                            <i class="fas fa-trophy trophy-icon"></i>
-                            Tus canciones más reproducidas
-                        </h2>
-                        <div class="view-options">
-                            <button class="view-btn active" data-view="list">
-                                <i class="fas fa-list"></i>
-                            </button>
-                            <button class="view-btn" data-view="chart">
-                                <i class="fas fa-chart-bar"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="top-songs-list">
-                        <div class="top-song-item" data-rank="1">
-                            <div class="song-rank">
-                                <div class="rank-number">1</div>
-                                <div class="rank-change up">
-                                    <i class="fas fa-arrow-up"></i>
-                                </div>
-                            </div>
-                            <div class="song-content">
-                                <div class="song-cover">
-                                    <img src="assets/img/song1.jpg" alt="Midnight Vibes">
-                                    <div class="play-overlay">
-                                        <button class="play-btn">
-                                            <i class="fas fa-play"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="song-details">
-                                    <h4>Midnight Vibes</h4>
-                                    <p>Dreamy Sound</p>
-                                    <div class="song-stats">
-                                        <span class="plays">1,247 reproducciones</span>
-                                        <span class="listening-time">21h 15m escuchado</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="song-actions">
-                                <div class="play-count">
-                                    <div class="play-bar">
-                                        <div class="play-fill" style="width: 100%;"></div>
-                                    </div>
-                                </div>
-                                <button class="action-btn like-btn">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <button class="action-btn">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="top-song-item" data-rank="2">
-                            <div class="song-rank">
-                                <div class="rank-number">2</div>
-                                <div class="rank-change same">
-                                    <i class="fas fa-minus"></i>
-                                </div>
-                            </div>
-                            <div class="song-content">
-                                <div class="song-cover">
-                                    <img src="assets/img/song2.jpg" alt="City Lights">
-                                    <div class="play-overlay">
-                                        <button class="play-btn">
-                                            <i class="fas fa-play"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="song-details">
-                                    <h4>City Lights</h4>
-                                    <p>Luna & The Echo</p>
-                                    <div class="song-stats">
-                                        <span class="plays">1,089 reproducciones</span>
-                                        <span class="listening-time">18h 45m escuchado</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="song-actions">
-                                <div class="play-count">
-                                    <div class="play-bar">
-                                        <div class="play-fill" style="width: 87%;"></div>
-                                    </div>
-                                </div>
-                                <button class="action-btn like-btn">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <button class="action-btn">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="top-song-item" data-rank="3">
-                            <div class="song-rank">
-                                <div class="rank-number">3</div>
-                                <div class="rank-change up">
-                                    <i class="fas fa-arrow-up"></i>
-                                </div>
-                            </div>
-                            <div class="song-content">
-                                <div class="song-cover">
-                                    <img src="assets/img/song3.jpg" alt="Velvet Moon">
-                                    <div class="play-overlay">
-                                        <button class="play-btn">
-                                            <i class="fas fa-play"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="song-details">
-                                    <h4>Velvet Moon</h4>
-                                    <p>Indigo Soul</p>
-                                    <div class="song-stats">
-                                        <span class="plays">924 reproducciones</span>
-                                        <span class="listening-time">15h 32m escuchado</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="song-actions">
-                                <div class="play-count">
-                                    <div class="play-bar">
-                                        <div class="play-fill" style="width: 74%;"></div>
-                                    </div>
-                                </div>
-                                <button class="action-btn like-btn">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <button class="action-btn">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="top-song-item" data-rank="4">
-                            <div class="song-rank">
-                                <div class="rank-number">4</div>
-                                <div class="rank-change down">
-                                    <i class="fas fa-arrow-down"></i>
-                                </div>
-                            </div>
-                            <div class="song-content">
-                                <div class="song-cover">
-                                    <img src="assets/img/artist1.jpg" alt="Electric Dreams">
-                                    <div class="play-overlay">
-                                        <button class="play-btn">
-                                            <i class="fas fa-play"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="song-details">
-                                    <h4>Electric Dreams</h4>
-                                    <p>Luna</p>
-                                    <div class="song-stats">
-                                        <span class="plays">756 reproducciones</span>
-                                        <span class="listening-time">12h 38m escuchado</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="song-actions">
-                                <div class="play-count">
-                                    <div class="play-bar">
-                                        <div class="play-fill" style="width: 61%;"></div>
-                                    </div>
-                                </div>
-                                <button class="action-btn like-btn">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <button class="action-btn">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="top-song-item" data-rank="5">
-                            <div class="song-rank">
-                                <div class="rank-number">5</div>
-                                <div class="rank-change up">
-                                    <i class="fas fa-arrow-up"></i>
-                                </div>
-                            </div>
-                            <div class="song-content">
-                                <div class="song-cover">
-                                    <img src="assets/img/artist2.jpg" alt="Neon Paradise">
-                                    <div class="play-overlay">
-                                        <button class="play-btn">
-                                            <i class="fas fa-play"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="song-details">
-                                    <h4>Neon Paradise</h4>
-                                    <p>Synth Babe</p>
-                                    <div class="song-stats">
-                                        <span class="plays">683 reproducciones</span>
-                                        <span class="listening-time">11h 22m escuchado</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="song-actions">
-                                <div class="play-count">
-                                    <div class="play-bar">
-                                        <div class="play-fill" style="width: 55%;"></div>
-                                    </div>
-                                </div>
-                                <button class="action-btn like-btn">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <button class="action-btn">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="show-more-btn">
-                        <span>Ver más canciones</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                </section>
-
-                <!-- Top Artists -->
-                <section class="section">
-                    <div class="section-header">
-                        <h2>
-                            <i class="fas fa-crown crown-icon"></i>
-                            Tus artistas más reproducidos
-                        </h2>
-                        <a href="#" class="show-all">Ver todo</a>
-                    </div>
-
-                    <div class="top-artists-grid">
-                        <div class="top-artist-card" data-rank="1">
-                            <div class="artist-rank">1</div>
-                            <div class="artist-image">
-                                <img src="assets/img/artist1.jpg" alt="Luna">
-                                <div class="play-overlay">
-                                    <button class="play-btn">
-                                        <i class="fas fa-play"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="artist-info">
-                                <h3>Luna</h3>
-                                <p class="artist-genre">Electronic • Ambient</p>
-                                <div class="artist-stats">
-                                    <span class="total-plays">3,247 plays</span>
-                                    <span class="total-time">54h 12m</span>
-                                </div>
-                            </div>
-                            <button class="follow-btn following">
-                                <i class="fas fa-check"></i>
-                                Siguiendo
-                            </button>
-                        </div>
-
-                        <div class="top-artist-card" data-rank="2">
-                            <div class="artist-rank">2</div>
-                            <div class="artist-image">
-                                <img src="assets/img/artist2.jpg" alt="Synth Babe">
-                                <div class="play-overlay">
-                                    <button class="play-btn">
-                                        <i class="fas fa-play"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="artist-info">
-                                <h3>Synth Babe</h3>
-                                <p class="artist-genre">Synthwave • Electronic</p>
-                                <div class="artist-stats">
-                                    <span class="total-plays">2,891 plays</span>
-                                    <span class="total-time">48h 35m</span>
-                                </div>
-                            </div>
-                            <button class="follow-btn following">
-                                <i class="fas fa-check"></i>
-                                Siguiendo
-                            </button>
-                        </div>
-
-                        <div class="top-artist-card" data-rank="3">
-                            <div class="artist-rank">3</div>
-                            <div class="artist-image">
-                                <img src="assets/img/artist3.jpg" alt="Echo Wave">
-                                <div class="play-overlay">
-                                    <button class="play-btn">
-                                        <i class="fas fa-play"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="artist-info">
-                                <h3>Echo Wave</h3>
-                                <p class="artist-genre">Ambient • Chill</p>
-                                <div class="artist-stats">
-                                    <span class="total-plays">2,156 plays</span>
-                                    <span class="total-time">38h 47m</span>
-                                </div>
-                            </div>
-                            <button class="follow-btn">
-                                <i class="fas fa-plus"></i>
-                                Seguir
-                            </button>
-                        </div>
-
-                        <div class="top-artist-card" data-rank="4">
-                            <div class="artist-rank">4</div>
-                            <div class="artist-image">
-                                <img src="assets/img/song1.jpg" alt="Dreamy Sound">
-                                <div class="play-overlay">
-                                    <button class="play-btn">
-                                        <i class="fas fa-play"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="artist-info">
-                                <h3>Dreamy Sound</h3>
-                                <p class="artist-genre">Dream Pop • Indie</p>
-                                <div class="artist-stats">
-                                    <span class="total-plays">1,743 plays</span>
-                                    <span class="total-time">29h 18m</span>
-                                </div>
-                            </div>
-                            <button class="follow-btn following">
-                                <i class="fas fa-check"></i>
-                                Siguiendo
-                            </button>
-                        </div>
-
-                        <div class="top-artist-card" data-rank="5">
-                            <div class="artist-rank">5</div>
-                            <div class="artist-image">
-                                <img src="assets/img/song2.jpg" alt="Indigo Soul">
-                                <div class="play-overlay">
-                                    <button class="play-btn">
-                                        <i class="fas fa-play"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="artist-info">
-                                <h3>Indigo Soul</h3>
-                                <p class="artist-genre">Soul • R&B</p>
-                                <div class="artist-stats">
-                                    <span class="total-plays">1,287 plays</span>
-                                    <span class="total-time">21h 55m</span>
-                                </div>
-                            </div>
-                            <button class="follow-btn">
-                                <i class="fas fa-plus"></i>
-                                Seguir
-                            </button>
-                        </div>
-
-                        <div class="top-artist-card" data-rank="6">
-                            <div class="artist-rank">6</div>
-                            <div class="artist-image">
-                                <img src="assets/img/song3.jpg" alt="Cosmic Waves">
-                                <div class="play-overlay">
-                                    <button class="play-btn">
-                                        <i class="fas fa-play"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="artist-info">
-                                <h3>Cosmic Waves</h3>
-                                <p class="artist-genre">Space Ambient</p>
-                                <div class="artist-stats">
-                                    <span class="total-plays">956 plays</span>
-                                    <span class="total-time">16h 32m</span>
-                                </div>
-                            </div>
-                            <button class="follow-btn">
-                                <i class="fas fa-plus"></i>
-                                Seguir
-                            </button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Listening Habits -->
-                <section class="section">
-                    <div class="section-header">
-                        <h2>
-                            <i class="fas fa-chart-line chart-icon"></i>
-                            Tus hábitos de escucha
-                        </h2>
-                    </div>
-
-                    <div class="habits-grid">
-                        <div class="habit-card">
-                            <div class="habit-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="habit-info">
-                                <h3>Horario favorito</h3>
-                                <p class="habit-value">9:00 PM - 12:00 AM</p>
-                                <span class="habit-detail">78% de tu música nocturna</span>
-                            </div>
-                        </div>
-
-                        <div class="habit-card">
-                            <div class="habit-icon">
-                                <i class="fas fa-calendar-week"></i>
-                            </div>
-                            <div class="habit-info">
-                                <h3>Día más activo</h3>
-                                <p class="habit-value">Viernes</p>
-                                <span class="habit-detail">23% más que otros días</span>
-                            </div>
-                        </div>
-
-                        <div class="habit-card">
-                            <div class="habit-icon">
-                                <i class="fas fa-repeat"></i>
-                            </div>
-                            <div class="habit-info">
-                                <h3>Canción en repeat</h3>
-                                <p class="habit-value">Midnight Vibes</p>
-                                <span class="habit-detail">Reproducida 47 veces seguidas</span>
-                            </div>
-                        </div>
-
-                        <div class="habit-card">
-                            <div class="habit-icon">
-                                <i class="fas fa-tags"></i>
-                            </div>
-                            <div class="habit-info">
-                                <h3>Género favorito</h3>
-                                <p class="habit-value">Electronic</p>
-                                <span class="habit-detail">42% de tu biblioteca</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Recently Played History -->
-                <section class="section">
-                    <div class="section-header">
-                        <h2>
-                            <i class="fas fa-history history-icon"></i>
-                            Historial reciente
-                        </h2>
-                        <a href="#" class="show-all">Ver todo</a>
-                    </div>
-
-                    <div class="history-timeline">
-                        <div class="history-item">
-                            <div class="history-time">Hace 2 min</div>
-                            <div class="history-content">
-                                <img src="assets/img/song1.jpg" alt="Midnight Vibes">
-                                <div class="history-info">
-                                    <h4>Midnight Vibes</h4>
-                                    <p>Dreamy Sound</p>
-                                </div>
-                                <div class="history-duration">Completada</div>
-                            </div>
-                        </div>
-
-                        <div class="history-item">
-                            <div class="history-time">Hace 7 min</div>
-                            <div class="history-content">
-                                <img src="assets/img/song2.jpg" alt="City Lights">
-                                <div class="history-info">
-                                    <h4>City Lights</h4>
-                                    <p>Luna & The Echo</p>
-                                </div>
-                                <div class="history-duration">3:45</div>
-                            </div>
-                        </div>
-
-                        <div class="history-item">
-                            <div class="history-time">Hace 12 min</div>
-                            <div class="history-content">
-                                <img src="assets/img/song3.jpg" alt="Velvet Moon">
-                                <div class="history-info">
-                                    <h4>Velvet Moon</h4>
-                                    <p>Indigo Soul</p>
-                                </div>
-                                <div class="history-duration">2:18</div>
-                            </div>
-                        </div>
-
-                        <div class="history-item">
-                            <div class="history-time">Hace 18 min</div>
-                            <div class="history-content">
-                                <img src="assets/img/artist1.jpg" alt="Electric Dreams">
-                                <div class="history-info">
-                                    <h4>Electric Dreams</h4>
-                                    <p>Luna</p>
-                                </div>
-                                <div class="history-duration">Completada</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </main>
-
-        <!-- Bottom Player -->
-        <div class="bottom-player">
-            <div class="player-left">
-                <div class="track-info">
-                    <img src="assets/img/song1.jpg" alt="Current track" class="track-image">
-                    <div class="track-details">
-                        <h4>Midnight Vibes</h4>
-                        <p>Dreamy Sound</p>
-                    </div>
-                    <button class="like-btn liked">
-                        <i class="fas fa-heart"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="player-center">
-                <div class="player-controls">
-                    <button class="control-btn shuffle">
-                        <i class="fas fa-random"></i>
-                    </button>
-                    <button class="control-btn prev">
-                        <i class="fas fa-step-backward"></i>
-                    </button>
-                    <button class="control-btn play-pause main-play">
-                        <i class="fas fa-pause"></i>
-                    </button>
-                    <button class="control-btn next">
-                        <i class="fas fa-step-forward"></i>
-                    </button>
-                    <button class="control-btn repeat active">
-                        <i class="fas fa-redo-alt"></i>
-                    </button>
-                </div>
-                <div class="progress-container">
-                    <span class="time current-time">2:31</span>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 65%;"></div>
-                        <div class="progress-handle"></div>
-                    </div>
-                    <span class="time total-time">3:45</span>
-                </div>
-            </div>
-
-            <div class="player-right">
-                <button class="control-btn">
-                    <i class="fas fa-list-ul"></i>
-                </button>
-                <button class="control-btn">
-                    <i class="fas fa-desktop"></i>
-                </button>
-                <div class="volume-container">
-                    <button class="control-btn volume-btn">
-                        <i class="fas fa-volume-up"></i>
-                    </button>
-                    <div class="volume-bar">
-                        <div class="volume-fill" style="width: 85%;"></div>
-                        <div class="volume-handle"></div>
-                    </div>
-                </div>
-                <button class="control-btn">
-                    <i class="fas fa-expand-arrows-alt"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
-</body>
-</html>
+                                <i class="fas fa-user-
