@@ -5201,3 +5201,41 @@ body::before {
 .music-player.buffering .progress-bar::before {
     animation: premium-buffering 1s linear infinite;
 }
+
+/* CSS inicial proporcionado */
+
+/* Estilos premium brillantes y reflectivos */
+:root {
+  --rosa-brillo: #ff007f;
+  --rosa-neon: #ff2e9c;
+  --rosa-claro: #ff66c4;
+  --glow: 0 0 15px var(--rosa-neon), 0 0 30px var(--rosa-neon), 0 0 45px var(--rosa-neon);
+}
+
+body, .sidebar, .player, .card, .btn, .active {
+  background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(50,0,50,0.9));
+  color: #fff;
+}
+
+.btn, .active, .player button, .sidebar a:hover {
+  box-shadow: var(--glow);
+  border-color: var(--rosa-claro);
+  transition: all 0.4s ease;
+}
+
+.btn:hover, .active:hover, .player button:hover {
+  transform: scale(1.05);
+  filter: brightness(1.3);
+}
+
+h1, h2, h3, h4 {
+  color: var(--rosa-neon);
+  text-shadow: 0 0 10px var(--rosa-neon), 0 0 20px var(--rosa-neon);
+}
+
+.slider::-webkit-scrollbar-thumb {
+  background: var(--rosa-neon);
+  border-radius: 10px;
+  box-shadow: var(--glow);
+}
+
